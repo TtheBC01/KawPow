@@ -6,7 +6,7 @@
 
 This repository containerizes the Kawpow mining software which runs the [KawPow](https://eips.ethereum.org/EIPS/eip-1057) Proof-of-Work algorithm. 
 
-## [Building](https://xmrig.com/docs/miner/build/ubuntu)
+## [Building](https://github.com/RavenCommunity/kawpowminer#build)
 
 To build the KawPow image locally:
 
