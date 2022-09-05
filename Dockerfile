@@ -30,8 +30,10 @@ FROM nvidia/cuda:${CUDAVERSION}-runtime-ubuntu18.04
 
 # Set some defaults
 ENV PATH=/kawpowminer/build/kawpowminer:$PATH
-ENV POOL=west.us.rvnt.minermore.com
-ENV PORT=4501
+#ENV POOL=west.us.rvnt.minermore.com
+#ENV PORT=4501
+ENV POOL=35.190.124.115
+ENV PORT=9200
 
 # get the binaries from the previous layer
 COPY --from=builder /kawpowminer/build /kawpowminer/build 
