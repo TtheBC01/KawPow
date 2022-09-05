@@ -43,5 +43,5 @@ You will need the following information handy to start the container:
 3. A name for your mining rig. 
 
 ```shell
-docker run -d --rm --env POOL=rvnt.minermore.com --env PORT=4505 --env RIG_ID="cyberskull" --env WALLET=4BXXX --gpus all tthebc01/kawpow
+docker run -d --rm --env POOL=west.us.rvnt.minermore.com --env PORT=4501 --env RIG_ID="cyberskull" --env WALLET=4BXXX --gpus all tthebc01/kawpow
 ```
