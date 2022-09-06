@@ -22,13 +22,13 @@ docker pull tthebc01/kawpow
 
 ### Customizing the CUDA version
 
-If you are going to use your GPU with this image, you will need to make sure the host CUDA version and container CUDA versions match. Check what CUDA release you are using:
+KawPow requires the use of a GPU, so you will need to make sure the host CUDA version and container CUDA versions match. Check what CUDA release you are using:
 
 ```shell
 nvidia-smi
 ```
 
-Then build with an appropriate base image using the build-time arg `CUDAVERSION`:
+Then build with an appropriate base image using the build-time arg `CUDAVERSION`. For example:
 
 ```shell
 docker build -t kawpow --build-arg CUDAVERSION=11.4.0 .
@@ -36,12 +36,14 @@ docker build -t kawpow --build-arg CUDAVERSION=11.4.0 .
 
 ## Starting KAWPOW
 
-You will need the following information handy to start the container:
+You will likely want to set the following runtime arguments to something besides the defaults:
 
-1. The address and port of the [stratum](https://en.bitcoinwiki.org/wiki/Stratum_mining_protocol) server for the pool you want to mine with. Some popular choices are [2Miners](https://2miners.com/rvn-mining-pool), [MineMore](https://minermore.com/pool/RVN/), or [Nanopool](https://nanopool.org/).
-2. The address of the wallet you want to receive you mining rewards in.
-3. A name for your mining rig. 
+- `WALLET`: The mining address to which shares should be attributed
+- `POOL`: URL or IP address of the stratum server
+- `PORT`: Port to connect to on the mining pool
+
+Example:
 
 ```shell
-docker run -d --rm --env POOL=west.us.rvnt.minermore.com --env PORT=4501 --env WALLET=4BXXX --gpus all tthebc01/kawpow
+docker run --name kawpow -d --rm --env POOL=west.us.rvnt.minermore.com --env PORT=4501 --env WALLET=4BXXX --gpus all tthebc01/kawpow
 ```
