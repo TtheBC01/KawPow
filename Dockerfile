@@ -28,17 +28,15 @@ RUN make -sj $(nproc)
 # Runtime layer
 FROM nvidia/cuda:${CUDAVERSION}-runtime-ubuntu18.04
 
+# get the binaries from the previous layer
+COPY --from=builder /kawpowminer/build /kawpowminer/build 
+
 # Set some defaults
 ENV PATH=/kawpowminer/build/kawpowminer:$PATH
-#ENV POOL=west.us.rvnt.minermore.com
-#ENV PORT=4501
 ENV SCHEME='stratum+tcp'
 ENV POOL=kawpow.auto.nicehash.com
 ENV PORT=9200
 ENV RIGNAME=worker
-
-# get the binaries from the previous layer
-COPY --from=builder /kawpowminer/build /kawpowminer/build 
 
 # add a non-root user
 RUN useradd -ms /bin/bash kawpowminer
